@@ -17,52 +17,56 @@ if (debug) {
 
 const rows = [];
 
-// compareRow: compares two rows and outputs an object containing the number of
-// pegs that are the same in color and position, and the the number
+// Algo finished, but docs still under construction
+
+// function compareRow: compares two rows and outputs an object containing the number of
+// pegs that are the same in color and position, and the number
 // of pegs that are the same in color only
 
-// Algo under construction
-
-/*
 const compareRow = (row1, row2) => {
     if (row1.length !== row2.length) {
         console.log('Array error');
         return;
     }
-    // Row indices where the pegs are the same color
-    const matchingIndices = [];
-    // Number of pegs with correct position and color
+    // Indices where row1[index] has been matched, with the only exceptions at
+    // locations which will not be accessed again because the outer loop has
+    // passed them
+    const a = [];
+    // Indices where row2[index] has been matched with a value in a different index
+    // in row 1
+    const b = [];
+    // Number of pegs with correct color and position
     let correctColorAndPosition = 0;
+    // Number of pegs with correct color but incorrect poistion
     let correctColorNotPosition = 0;
+
+    // Find matching color and position
     for (let i = 0; i < row1.length; i++) {
         if (row1[i] == row2[i]) {
             correctColorAndPosition++;
-            matchingIndices.push(i);
+            a.push(i);
             continue;
-        }
-        for (let j = 0; j < row2.length; j++) {
-            
         }
     }
-  // Doubly commented block begin
+
+    // Find matching color but not position
     for (let i = 0; i < row1.length; i++) {
-        if (matchingIndices.includes(i)) {
+        if (a.includes(i)) {
             continue;
         }
-        if (!matchingIndices.includes(i)) {
             for (let j = 0; j < row2.length; j++) {
-                // We know at this point that if i === j, then we do not increment
-                // because the arrays do not match at this index
+                if (a.includes(j) || b.includes(j)) {
+                    continue;
+                }
                 if (row1[i] === row2[j]) {
-                    console.log(`${i} ${j}`)
+                    b.push(j);
                     correctColorNotPosition++;
-                    // PUT THIS INTO WORDS AND MAKE IT MATCH AS CLOSELY AS POSSIBLE
+                    break;
                 }
             }
-        }
     }
-    // Doubly commented block end
-    if (correctColorAndPosition + correctColorNotPosition > 4) {
+
+    if (correctColorAndPosition + correctColorNotPosition > row1.length) {
         console.log('error');
         return;
     }
@@ -71,8 +75,6 @@ const compareRow = (row1, row2) => {
         correctColorNotPosition: correctColorNotPosition
     }
 }
-
-*/
 
 // to be replaced with while
 // The main loop
