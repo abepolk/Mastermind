@@ -111,13 +111,13 @@ const getCurrentRow = () => {
     console.log('getCurrentRow error');
 }
 
-const displayResults = (resultsArray) => {
+const displayResults = (resultsArray, currentRowIndex) => {
         if (resultsArray.correctColorAndPosition === 4) {
-            $('.message-display').text('You win!');
+            $('#message-display').text('You win!');
             return;
         }
         if (currentRowIndex === 12) {
-            $('.message-display').text('You lose!');
+            $('#message-display').text('You lose!');
             return;
         }
     console.log(resultsArray)
@@ -134,6 +134,6 @@ $('.button').on('click', null, secretRow, (event) => {
     // length probably needs to be changed for jQuery
     if (!currentRow.includes('empty')) {
         const resultsArray = compareRow(currentRow, secretRow);
-        displayResults(resultsArray);
+        displayResults(resultsArray, currentRowIndex);
     }
 });
