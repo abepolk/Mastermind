@@ -116,7 +116,7 @@ const displayResults = (resultsArray, currentRowIndex) => {
             $('#message-display').text('You win!');
             return;
         }
-        if (currentRowIndex === 12) {
+        if (currentRowIndex === 11) {
             $('#message-display').text('You lose!');
             return;
         }
