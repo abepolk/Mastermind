@@ -1,10 +1,9 @@
-const debug = true;
+const debug = false;
+
+// This is not used right now
 const debugVars = {}
-
-let secretRow;
-
 if (debug) {
-    secretRow = ['red', 'orange', 'blue', 'red'];
+    debugVars.secretRow = ['red', 'orange', 'blue', 'red'];
     debugVars.abbr = {
         r: 'red',
         o: 'orange',
@@ -76,27 +75,43 @@ const compareRow = (row1, row2) => {
     }
 }
 
-// to be replaced with while
-// The main loop
-for (let i = 0; i < 20; i++) {
-    const colorString = prompt('Select four colors:');
-    let row;
-    if (debug) {
-        row = colorString.split('').map((x) => debugVars.abbr[x]);
-    }
-    let sameArray = compareRow(row, secretRow);
-    if (debug) {
-        console.log(sameArray);
-    }
-    if (sameArray.correctColorAndPosition === 4) {
-        console.log('you win');
-        break;
+// stub
+const addColorElement = (color) => {
+    console.log('color' + color)
+
+}
+
+const getCurrentRow = () => {
+    return [['red', 'black', 'blue', 'red'], 3];
+}
+
+const displayResults = (resultsArray) => {
+    console.log('disoplaying results');
+    console.log(resultsArray)
+}
+// TODO make this random
+const secretRow = ['red', 'orange', 'blue', 'red'];
+
+$('.button').on('click', null, secretRow, (event) => {
+    const secretRow = event.data;
+    const color = $(event.target).text();
+    // This function must update the DOM board and DOM "choice display"
+    addColorElement(color);
+    const [currentRow, currentRowIndex] = getCurrentRow();
+    // length probably needs to be changed for jQuery
+    if (currentRow.length === 4) {
+        const resultsArray = compareRow(currentRow, secretRow);
+        displayResults(resultsArray);
+        if (resultsArray.correctColorAndPosition === 4) {
+            $('.message-display').text('You win!');
+            return;
+        }
+        if (currentRowIndex === 12) {
+            $('.message-display').text('You lose!');
+            return;
+        }
+
+    
     }
 
-    // The board has 12 rows
-    if (i === 12) {
-        console.log('you lose');
-        break;
-    }
-    i++;
-}
+});
