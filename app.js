@@ -77,6 +77,7 @@ const compareRow = (row1, row2) => {
 
 const addColorElement = (color) => {
     // Get a vanilla JS array of arrays containing the colors on the board.
+    // This needs to be changed or made into a function
     const rows = $('#main-row-container').children().get().map((row) => {
         return $(row).children().get().map((cell) => {
             return $(cell).attr('color');
@@ -95,11 +96,30 @@ const addColorElement = (color) => {
 }
 
 const getCurrentRow = () => {
-    return [['red', 'black', 'blue', 'red'], 3];
+    // Get a vanilla JS array of arrays containing the colors on the board.
+    // This needs to be changed or made into a function
+    const rows = $('#main-row-container').children().get().map((row) => {
+        return $(row).children().get().map((cell) => {
+            return $(cell).attr('color');
+        });
+    });
+    for (let i = 0; i < rows.length; i++) {
+        if (rows[i].includes('empty') || i === rows.length - 1 || rows[i + 1][0] === 'empty') {
+            return [rows[i], i];
+        }
+    }
+    console.log('getCurrentRow error');
 }
 
 const displayResults = (resultsArray) => {
-    console.log('displaying results');
+        if (resultsArray.correctColorAndPosition === 4) {
+            $('.message-display').text('You win!');
+            return;
+        }
+        if (currentRowIndex === 12) {
+            $('.message-display').text('You lose!');
+            return;
+        }
     console.log(resultsArray)
 }
 // TODO make this random
@@ -112,19 +132,8 @@ $('.button').on('click', null, secretRow, (event) => {
     addColorElement(color);
     const [currentRow, currentRowIndex] = getCurrentRow();
     // length probably needs to be changed for jQuery
-    if (currentRow.length === 4) {
+    if (!currentRow.includes('empty')) {
         const resultsArray = compareRow(currentRow, secretRow);
         displayResults(resultsArray);
-        if (resultsArray.correctColorAndPosition === 4) {
-            $('.message-display').text('You win!');
-            return;
-        }
-        if (currentRowIndex === 12) {
-            $('.message-display').text('You lose!');
-            return;
-        }
-
-    
     }
-
 });
