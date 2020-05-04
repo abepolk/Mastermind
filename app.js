@@ -75,10 +75,23 @@ const compareRow = (row1, row2) => {
     }
 }
 
-// stub
 const addColorElement = (color) => {
-    console.log('color' + color)
-
+    // Get a vanilla JS array of arrays containing the colors on the board.
+    const rows = $('#main-row-container').children().get().map((row) => {
+        return $(row).children().get().map((cell) => {
+            return $(cell).attr('color');
+        });
+    });
+    // Update the DOM with the new color on the correct cell
+    outer:
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < rows[0].length; j++) {
+            if (rows[i][j] === 'empty') {
+                $('#main-row-container').children().eq(i).children().eq(j).attr('color', color);
+                break outer;
+            }
+        }
+    }
 }
 
 const getCurrentRow = () => {
@@ -86,7 +99,7 @@ const getCurrentRow = () => {
 }
 
 const displayResults = (resultsArray) => {
-    console.log('disoplaying results');
+    console.log('displaying results');
     console.log(resultsArray)
 }
 // TODO make this random

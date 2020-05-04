@@ -41,3 +41,21 @@ body {
     width: 6vh;
     height: 6vh;
 }
+.cell[color='red'] {
+    background-color: red;
+}
+.cell[color='orange'] {
+    background-color: orange;
+}
+.cell[color='yellow'] {
+    background-color: yellow;
+}
+.cell[color='green'] {
+    background-color: green;
+}
+.cell[color='blue'] {
+    background-color: blue;
+}
+.cell[color='black'] {
+    background-color: black;
+}
