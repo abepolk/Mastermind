@@ -112,11 +112,13 @@ const getCurrentRow = () => {
 }
 
 const displayResults = (resultsArray, currentRowIndex) => {
-        if (resultsArray.correctColorAndPosition === 4) {
+        const NUM_ROWS = 12;
+        const NUM_COLS = 4;
+        if (resultsArray.correctColorAndPosition === NUM_COLS) {
             $('#message-display').text('You win!');
             return;
         }
-        if (currentRowIndex === 11) {
+        if (currentRowIndex === NUM_ROWS - 1) {
             $('#message-display').text('You lose!');
             return;
         }
@@ -137,3 +139,6 @@ $('.button').on('click', null, secretRow, (event) => {
         displayResults(resultsArray, currentRowIndex);
     }
 });
+
+// TODO empty -> no color
+// TODO set function at line 91 for add color to dom elem
