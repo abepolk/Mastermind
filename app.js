@@ -31,7 +31,7 @@ if (debug) {
 
 const compareRow = (row1, row2) => {
     if (row1.length !== row2.length) {
-        console.log('Array error');
+        console.error('Array error');
         return;
     }
     // Indices where row1[index] has been matched, with the only exceptions at
@@ -73,7 +73,7 @@ const compareRow = (row1, row2) => {
     }
 
     if (correctColorAndPosition + correctColorNotPosition > row1.length) {
-        console.log('error');
+        console.error('error');
         return;
     }
     return {
@@ -115,7 +115,7 @@ const getCurrentRow = () => {
             return [arr[i], i];
         }
     }
-    console.log('getCurrentRow error');
+    console.error('getCurrentRow error');
 }
 
 const revealSecret = () => {
@@ -128,6 +128,17 @@ const revealSecret = () => {
 const displayResults = (resultsArray, currentRowIndex) => {
         const NUM_ROWS = 12;
         const NUM_COLS = 4;
+    for (let i = 0; i < NUM_COLS; i++) {
+        let color = "empty";
+        if (i < resultsArray.correctColorAndPosition) {
+            color = "red";
+        } else if (i < resultsArray.correctColorAndPosition + resultsArray.correctColorNotPosition) {
+            color = "white";
+        }
+        console.log(color);
+        console.log($('#main-row-container').children().eq(currentRowIndex).children('.results-cell').eq(i))
+        $('#main-row-container').children().eq(currentRowIndex).find('.results-cell').eq(i).attr('color', color);
+    }
         if (resultsArray.correctColorAndPosition === NUM_COLS) {
             $('#message-display').text('You win!');
             revealSecret();
@@ -138,7 +149,6 @@ const displayResults = (resultsArray, currentRowIndex) => {
             revealSecret();
             return;
         }
-    console.log(resultsArray)
 }
 
 ///////////////////
