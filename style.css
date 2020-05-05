@@ -34,6 +34,7 @@ body {
     width: 40%;
     margin: 0 auto;
     background-color: saddlebrown;
+    border-radius: 10%;
 }
 #secret-row {
     margin: 5%;
@@ -89,6 +90,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.secret-cell[color='darkgreen'] {
+    background-color: darkgreen;
 }
 .results-box {
     width: 4vh;

@@ -111,15 +111,24 @@ const getCurrentRow = () => {
     console.log('getCurrentRow error');
 }
 
+const revealSecret = () => {
+    const $secretRow = $('#secret-row');
+    $secretRow.children().each((index, $elem) => {
+        $elem.attr('color', secretRow[index]);
+    })
+}
+
 const displayResults = (resultsArray, currentRowIndex) => {
         const NUM_ROWS = 12;
         const NUM_COLS = 4;
         if (resultsArray.correctColorAndPosition === NUM_COLS) {
             $('#message-display').text('You win!');
+            revealSecret();
             return;
         }
         if (currentRowIndex === NUM_ROWS - 1) {
             $('#message-display').text('You lose!');
+            revealSecret();
             return;
         }
     console.log(resultsArray)
@@ -136,6 +145,7 @@ $('.button').on('click', null, secretRow, (event) => {
     // length probably needs to be changed for jQuery
     if (!currentRow.includes('empty')) {
         const resultsArray = compareRow(currentRow, secretRow);
+        console.log(currentRow);
         displayResults(resultsArray, currentRowIndex);
     }
 });
