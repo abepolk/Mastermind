@@ -1,5 +1,5 @@
 
-///////// Debug
+///////////////////////////////// Debug
 
 const debug = false;
 
@@ -21,7 +21,7 @@ if (debug) {
 
 // const rows = [];
 
-///////////////// Matching algorithm
+///////////////// Matching Algorithm
 
 // Algo finished, but docs still under construction
 
@@ -60,16 +60,16 @@ const compareRow = (row1, row2) => {
         if (a.includes(i)) {
             continue;
         }
-            for (let j = 0; j < row2.length; j++) {
-                if (a.includes(j) || b.includes(j)) {
-                    continue;
-                }
-                if (row1[i] === row2[j]) {
-                    b.push(j);
-                    correctColorNotPosition++;
-                    break;
-                }
+        for (let j = 0; j < row2.length; j++) {
+            if (a.includes(j) || b.includes(j)) {
+                continue;
             }
+            if (row1[i] === row2[j]) {
+                b.push(j);
+                correctColorNotPosition++;
+                break;
+            }
+        }
     }
 
     if (correctColorAndPosition + correctColorNotPosition > row1.length) {
@@ -82,22 +82,26 @@ const compareRow = (row1, row2) => {
     }
 }
 
-///////////////// DOM Functions
+/////////////////////////////////// DOM Functions
 
-const addColorElement = (color) => {
+const convertDomRowsTo2dArray = () => {
     // Get a vanilla JS array of arrays containing the colors on the board.
     // This needs to be changed or made into a function
-    const rows = $('#main-row-container').children().get().map((row) => {
-        return $(row).children().get().map((cell) => {
+    return $('#main-row-container').children().get().map((row) => {
+        return $(row).children('.cell').get().map((cell) => {
             return $(cell).attr('color');
         });
     });
+}
+
+const addColorElement = (color) => {
+    const arr = convertDomRowsTo2dArray();
     // Update the DOM with the new color on the correct cell
     outer:
-    for (let i = 0; i < rows.length; i++) {
-        for (let j = 0; j < rows[0].length; j++) {
-            if (rows[i][j] === 'empty') {
-                $('#main-row-container').children().eq(i).children().eq(j).attr('color', color);
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[0].length; j++) {
+            if (arr[i][j] === 'empty') {
+                $('#main-row-container').children().eq(i).children('.cell').eq(j).attr('color', color);
                 break outer;
             }
         }
@@ -105,16 +109,10 @@ const addColorElement = (color) => {
 }
 
 const getCurrentRow = () => {
-    // Get a vanilla JS array of arrays containing the colors on the board.
-    // This needs to be changed or made into a function
-    const rows = $('#main-row-container').children().get().map((row) => {
-        return $(row).children().get().map((cell) => {
-            return $(cell).attr('color');
-        });
-    });
-    for (let i = 0; i < rows.length; i++) {
-        if (rows[i].includes('empty') || i === rows.length - 1 || rows[i + 1][0] === 'empty') {
-            return [rows[i], i];
+    const arr = convertDomRowsTo2dArray();
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].includes('empty') || i === arr.length - 1 || arr[i + 1][0] === 'empty') {
+            return [arr[i], i];
         }
     }
     console.log('getCurrentRow error');
@@ -122,8 +120,8 @@ const getCurrentRow = () => {
 
 const revealSecret = () => {
     const $secretRow = $('#secret-row');
-    $secretRow.children().each((index, $elem) => {
-        $elem.attr('color', secretRow[index]);
+    $secretRow.children('.cell').each((index, elem) => {
+        $(elem).attr('color', secretRow[index]);
     })
 }
 
