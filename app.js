@@ -1,3 +1,6 @@
+
+///////// Debug
+
 const debug = false;
 
 // This is not used right now
@@ -14,7 +17,11 @@ if (debug) {
     }
 }
 
-const rows = [];
+
+
+// const rows = [];
+
+///////////////// Matching algorithm
 
 // Algo finished, but docs still under construction
 
@@ -75,6 +82,8 @@ const compareRow = (row1, row2) => {
     }
 }
 
+///////////////// DOM Functions
+
 const addColorElement = (color) => {
     // Get a vanilla JS array of arrays containing the colors on the board.
     // This needs to be changed or made into a function
@@ -133,8 +142,12 @@ const displayResults = (resultsArray, currentRowIndex) => {
         }
     console.log(resultsArray)
 }
+
+///////////////////
 // TODO make this random
 const secretRow = ['red', 'orange', 'blue', 'red'];
+
+////////////////// Button Event Handler
 
 $('.button').on('click', null, secretRow, (event) => {
     const secretRow = event.data;
