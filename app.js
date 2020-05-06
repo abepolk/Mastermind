@@ -137,13 +137,13 @@ const displayResults = (resultsArray, currentRowIndex) => {
         $('#main-row-container').children().eq(currentRowIndex).find('.results-cell').eq(i).attr('color', color);
     }
     if (resultsArray.correctColorAndPosition === NUM_COLS) {
-        const $message = $('<h2>').text('You win!');
+        const $message = $('<h1>').text('You win!');
         $('#message-display').append($message);
         revealSecret();
         return;
     }
     if (currentRowIndex === NUM_ROWS - 1) {
-        const $message = $('<h2>').text('You lose!');
+        const $message = $('<h1>').text('You lose!');
         $('#message-display').append($message);
         return;
     }
