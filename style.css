@@ -95,7 +95,8 @@ body {
     background-color: yellow;
 }
 .cell[color='green'] {
-    background-color: green;
+    /* to differentiate from darkgreen for secret row */
+    background-color: limegreen;
 }
 .cell[color='blue'] {
     background-color: blue;
