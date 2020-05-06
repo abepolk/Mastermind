@@ -17,14 +17,12 @@ if (debug) {
     }
 }
 
-////////////////////////// Global constants
+//////////////////////////////////// Global constants
 
 const NUM_ROWS = 12;
 const NUM_COLS = 4;
 
-// const rows = [];
-
-///////////////// Matching Algorithm
+//////////////////////////////// Matching Algorithm
 
 // Algo finished, but docs still under construction
 
@@ -150,11 +148,8 @@ const displayResults = (resultsArray, currentRowIndex) => {
     }
 }
 
-///////////////////
+////////////////////////// Dynamic cell generation
 
-
-
-// Should also generate secret cells here and not in HTML?
 const generateMainCells = () => {
     for (let i = 0; i < NUM_ROWS; i++) {
         const $row = $('<div>').addClass('row');
@@ -174,6 +169,8 @@ const generateMainCells = () => {
     }
 }
 
+/////////////////////// Generate secret code
+
 const generateSecretRow = () => {
     const colors = $('.button').get().map((button) => $(button).text());
     const secretRow = [];
@@ -183,11 +180,14 @@ const generateSecretRow = () => {
     return secretRow;
 }
 
+//////////////////////////////// Initialize game
+
 generateMainCells();
 const secretRow = generateSecretRow();
 
-////////////////// Button Event Handler
+//////////////////////////// Button Event Handler
 
+// Pass in secretRow as data on the event.
 $('.button').on('click', null, secretRow, (event) => {
     const secretRow = event.data;
     const color = $(event.target).text();
