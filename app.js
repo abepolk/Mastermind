@@ -1,22 +1,3 @@
-
-///////////////////////////////// Debug
-
-const debug = false;
-
-// This is not used right now
-const debugVars = {}
-if (debug) {
-    debugVars.secretRow = ['red', 'orange', 'blue', 'red'];
-    debugVars.abbr = {
-        r: 'red',
-        o: 'orange',
-        y: 'yellow',
-        g: 'green',
-        b: 'blue',
-        x: 'black'
-    }
-}
-
 //////////////////////////////////// Global constants
 
 const NUM_ROWS = 12;
@@ -55,7 +36,6 @@ const compareRow = (row1, row2) => {
             continue;
         }
     }
-
     // Find matching color but not position
     for (let i = 0; i < row1.length; i++) {
         if (a.includes(i)) {
@@ -72,7 +52,6 @@ const compareRow = (row1, row2) => {
             }
         }
     }
-
     if (correctColorAndPosition + correctColorNotPosition > row1.length) {
         console.error('error');
         return;
@@ -87,7 +66,6 @@ const compareRow = (row1, row2) => {
 
 const convertDomRowsTo2dArray = () => {
     // Get a vanilla JS array of arrays containing the colors on the board.
-    // This needs to be changed or made into a function
     return $('#main-row-container').children().get().map((row) => {
         return $(row).children('.cell').get().map((cell) => {
             return $(cell).attr('color');
@@ -192,16 +170,11 @@ const secretRow = generateSecretRow();
 $('.button').on('click', null, secretRow, (event) => {
     const secretRow = event.data;
     const color = $(event.target).text();
-    // This function must update the DOM board and DOM "choice display"
     addColorElement(color);
     const [currentRow, currentRowIndex] = getCurrentRow();
-    // length probably needs to be changed for jQuery
     if (!currentRow.includes('empty')) {
         const resultsArray = compareRow(currentRow, secretRow);
         console.log(currentRow);
         displayResults(resultsArray, currentRowIndex);
     }
 });
-
-// TODO empty -> no color
-// TODO set function at line 91 for add color to dom elem

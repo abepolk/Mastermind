@@ -12,7 +12,6 @@ body {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    /* can play with padding */
 }
 
 #container {
@@ -37,7 +36,6 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;0
 }
-
 .button {
     width: 30%;
     height: 10vh;
