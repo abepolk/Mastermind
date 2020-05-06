@@ -14,8 +14,8 @@ body {
 body {
     font-family: "Arial", sans-serif;
     /* can play with padding */
-    }
-    
+}
+
 #container {
     position: relative;
     width: 100%;
@@ -24,6 +24,27 @@ body {
 #aside {
     position: absolute;
     width: 60%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#instructions {
+    text-align: center;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#button-bar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.button {
+    width: 30%;
+    height: 10vh;
+    font-size: 24px;
+    margin-top: 10%;
+    margin-bottom: 5%
 }
 #board-container {
     position: absolute;

@@ -126,8 +126,8 @@ const revealSecret = () => {
 }
 
 const displayResults = (resultsArray, currentRowIndex) => {
-        const NUM_ROWS = 12;
-        const NUM_COLS = 4;
+    const NUM_ROWS = 12;
+    const NUM_COLS = 4;
     for (let i = 0; i < NUM_COLS; i++) {
         let color = "empty";
         if (i < resultsArray.correctColorAndPosition) {
@@ -135,20 +135,18 @@ const displayResults = (resultsArray, currentRowIndex) => {
         } else if (i < resultsArray.correctColorAndPosition + resultsArray.correctColorNotPosition) {
             color = "white";
         }
-        console.log(color);
-        console.log($('#main-row-container').children().eq(currentRowIndex).children('.results-cell').eq(i))
         $('#main-row-container').children().eq(currentRowIndex).find('.results-cell').eq(i).attr('color', color);
     }
-        if (resultsArray.correctColorAndPosition === NUM_COLS) {
-            $('#message-display').text('You win!');
-            revealSecret();
-            return;
-        }
-        if (currentRowIndex === NUM_ROWS - 1) {
-            $('#message-display').text('You lose!');
-            revealSecret();
-            return;
-        }
+    if (resultsArray.correctColorAndPosition === NUM_COLS) {
+        $('#message-display').text('You win!');
+        revealSecret();
+        return;
+    }
+    if (currentRowIndex === NUM_ROWS - 1) {
+        $('#message-display').text('You lose!');
+        revealSecret();
+        return;
+    }
 }
 
 ///////////////////
