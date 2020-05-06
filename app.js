@@ -136,7 +136,6 @@ const displayResults = (resultsArray, currentRowIndex) => {
         } else if (i < resultsArray.correctColorAndPosition + resultsArray.correctColorNotPosition) {
             color = "white";
         }
-        console.log($('#main-row-container').children().eq(currentRowIndex).find('.results-cell'))
         $('#main-row-container').children().eq(currentRowIndex).find('.results-cell').eq(i).attr('color', color);
     }
     if (resultsArray.correctColorAndPosition === NUM_COLS) {
@@ -152,8 +151,8 @@ const displayResults = (resultsArray, currentRowIndex) => {
 }
 
 ///////////////////
-// TODO make this random
-const secretRow = ['red', 'orange', 'blue', 'red'];
+
+
 
 // Should also generate secret cells here and not in HTML?
 const generateMainCells = () => {
@@ -172,11 +171,20 @@ const generateMainCells = () => {
         $resultsCellContainer.append($resultsBox);
         $row.append($resultsCellContainer);
         $('#main-row-container').append($row);
-        // LEFT OFF HERE, NOW REMOVE CELLS FROM HTML
     }
 }
 
+const generateSecretRow = () => {
+    const colors = $('.button').get().map((button) => $(button).text());
+    const secretRow = [];
+    for (let i = 0; i < NUM_COLS; i++) {
+        secretRow.push(colors[Math.floor(Math.random() * colors.length)]);
+    }
+    return secretRow;
+}
+
 generateMainCells();
+const secretRow = generateSecretRow();
 
 ////////////////// Button Event Handler
 
