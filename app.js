@@ -17,7 +17,10 @@ if (debug) {
     }
 }
 
+////////////////////////// Global constants
 
+const NUM_ROWS = 12;
+const NUM_COLS = 4;
 
 // const rows = [];
 
@@ -126,8 +129,6 @@ const revealSecret = () => {
 }
 
 const displayResults = (resultsArray, currentRowIndex) => {
-    const NUM_ROWS = 12;
-    const NUM_COLS = 4;
     for (let i = 0; i < NUM_COLS; i++) {
         let color = "empty";
         if (i < resultsArray.correctColorAndPosition) {
@@ -135,6 +136,7 @@ const displayResults = (resultsArray, currentRowIndex) => {
         } else if (i < resultsArray.correctColorAndPosition + resultsArray.correctColorNotPosition) {
             color = "white";
         }
+        console.log($('#main-row-container').children().eq(currentRowIndex).find('.results-cell'))
         $('#main-row-container').children().eq(currentRowIndex).find('.results-cell').eq(i).attr('color', color);
     }
     if (resultsArray.correctColorAndPosition === NUM_COLS) {
@@ -152,6 +154,29 @@ const displayResults = (resultsArray, currentRowIndex) => {
 ///////////////////
 // TODO make this random
 const secretRow = ['red', 'orange', 'blue', 'red'];
+
+// Should also generate secret cells here and not in HTML?
+const generateMainCells = () => {
+    for (let i = 0; i < NUM_ROWS; i++) {
+        const $row = $('<div>').addClass('row');
+        for (let i = 0; i < NUM_COLS; i++) {
+            const $cell = $('<div>').addClass('cell').attr('color', 'empty'); // Must add attr color here?
+            $row.append($cell);
+        }
+        const $resultsCellContainer = $('<div>').addClass('results-cell-container');
+        const $resultsBox = $('<div>').addClass('results-box')
+        for (let i = 0; i < 4; i++) {
+            const $resultsCell = $('<div>').addClass('results-cell');
+            $resultsBox.append($resultsCell);
+        }
+        $resultsCellContainer.append($resultsBox);
+        $row.append($resultsCellContainer);
+        $('#main-row-container').append($row);
+        // LEFT OFF HERE, NOW REMOVE CELLS FROM HTML
+    }
+}
+
+generateMainCells();
 
 ////////////////// Button Event Handler
 
