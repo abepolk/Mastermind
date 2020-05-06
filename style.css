@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    border: 2px solid green;
 }
 
 body {
@@ -38,14 +37,18 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;0
 }
-#message-display {
-    text-align: center;
-}
+
 .button {
     width: 30%;
     height: 10vh;
     font-size: 24px;
     margin: 1%;
+}
+#message-display {
+    text-align: center;
+}
+#instructions-link {
+    text-align: center;
 }
 #board-container {
     position: absolute;
