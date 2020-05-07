@@ -13,4 +13,4 @@ The cells are generated dynamically using jQuery. The buttons update the DOM usi
 https://abepolk.github.io/mastermind/
 
 ## Trivia
-Donald Knuth, an expert in theoretical computer science, demonstrated that the game could always be solved within five guesses using a minimax algorithm. Minimax is widely used in AI and decision theory (Wikipidia, "Mastermind"; Wikipedia, "Minimax").
+Donald Knuth, an expert in theoretical computer science, demonstrated that the game could always be solved within five guesses using a minimax algorithm. Minimax is widely used in AI and decision theory (Wikipedia, "Mastermind"; Wikipedia, "Minimax").
