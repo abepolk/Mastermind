@@ -16,13 +16,10 @@ const compareRow = (row1, row2) => {
         console.error('Array error');
         return;
     }
-    // Indices where row1[index] has been matched, with the only exceptions at
-    // locations which will not be accessed again because the outer loop has
-    // passed them
-    const a = [];
-    // Indices where row2[index] has been matched with a value in a different index
-    // in row 1
-    const b = [];
+    // Indices where row1[index] has been matched with row2[index] at the same location
+    const bothMatchIndices = [];
+    // Indices where row2[index] has been matched with a value in a different index in row1.
+    const colorOnlyMatches = [];
     // Number of pegs with correct color and position
     let correctColorAndPosition = 0;
     // Number of pegs with correct color but incorrect poistion
@@ -32,21 +29,21 @@ const compareRow = (row1, row2) => {
     for (let i = 0; i < row1.length; i++) {
         if (row1[i] == row2[i]) {
             correctColorAndPosition++;
-            a.push(i);
+            bothMatchIndices.push(i);
             continue;
         }
     }
     // Find matching color but not position
     for (let i = 0; i < row1.length; i++) {
-        if (a.includes(i)) {
+        if (bothMatchIndices.includes(i)) {
             continue;
         }
         for (let j = 0; j < row2.length; j++) {
-            if (a.includes(j) || b.includes(j)) {
+            if (bothMatchIndices.includes(j) || colorOnlyMatches.includes(j)) {
                 continue;
             }
             if (row1[i] === row2[j]) {
-                b.push(j);
+                colorOnlyMatches.push(j);
                 correctColorNotPosition++;
                 break;
             }
@@ -123,6 +120,7 @@ const displayResults = (resultsArray, currentRowIndex) => {
     if (currentRowIndex === NUM_ROWS - 1) {
         const $message = $('<h1>').text('You lose!');
         $('#message-display').append($message);
+        revealSecret();
         return;
     }
 }
