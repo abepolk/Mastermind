@@ -15,16 +15,14 @@ body {
 }
 
 #container {
-    position: relative;
+    display: flex;
     width: 100%;
 }
 #aside {
-    position: absolute;
-    width: 60%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    flex-grow: 1;
 }
 #instructions {
     text-align: center;
@@ -34,7 +32,7 @@ body {
 #button-bar {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;0
+    flex-wrap: wrap;
 }
 .button {
     width: 30%;
@@ -49,14 +47,8 @@ body {
     text-align: center;
 }
 #board-container {
-    position: absolute;
-    right: 0;
-    width: 40%;
 }
 #board {
-    width: 40%;
-    min-width: 275px;
-    margin: 0 auto;
     background-color: saddlebrown;
     border-radius: 10%;
 }
