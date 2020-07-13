@@ -63,8 +63,8 @@ const compareRow = (row1, row2) => {
 
 const convertDomRowsTo2dArray = () => {
     // Get a vanilla JS array of arrays containing the colors on the board.
-    return $('#main-row-container').children().get().map((row) => {
-        return $(row).children('.cell').get().map((cell) => {
+    return $('#board').find('.row:not(#secret-row)').get().map((row) => {
+        return $(row).find('.cell').get().map((cell) => {
             return $(cell).attr('color');
         });
     });
@@ -77,7 +77,7 @@ const addColorElement = (color) => {
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr[0].length; j++) {
             if (arr[i][j] === 'empty') {
-                $('#board').children().eq(i).children('.cell').eq(j).attr('color', color);
+                $('#board').find('.row:not(#secret-row)').eq(i).find('.cell').eq(j).attr('color', color);
                 break outer;
             }
         }
@@ -96,7 +96,7 @@ const getCurrentRow = () => {
 
 const revealSecret = () => {
     const $secretRow = $('#secret-row');
-    $secretRow.children('.cell').each((index, elem) => {
+    $secretRow.find('.cell').each((index, elem) => {
         $(elem).attr('color', secretRow[index]);
     })
 }
@@ -109,7 +109,7 @@ const displayResults = (resultsArray, currentRowIndex) => {
         } else if (i < resultsArray.correctColorAndPosition + resultsArray.correctColorNotPosition) {
             color = "white";
         }
-        $('#main-row-container').children().eq(currentRowIndex).find('.results-cell').eq(i).attr('color', color);
+        $('#board').find('.row:not(#secret-row)').eq(currentRowIndex).find('.results-cell').eq(i).attr('color', color);
     }
     if (resultsArray.correctColorAndPosition === NUM_COLS) {
         const $message = $('<h1>').text('You win!');
