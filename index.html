@@ -14,33 +14,28 @@
 <script src="app.js" defer></script>
 </head>
 <body>
-    <div id="container">
-        <aside id="aside">
-            <div id="instructions">
-                <p>Guess the secret code by selecting four colors using the buttons below:</p>
-            </div>
-            <div id="button-bar">
-                <button class="button">red</button>
-                <button class="button">orange</button>
-                <button class="button">yellow</button>
-                <button class="button">green</button>
-                <button class="button">blue</button>
-                <button class="button">black</button>
-            </div>
-            <div id="message-display"></div>
-            <p id="instructions-link"><a href="https://github.com/abepolk/mastermind/blob/master/README.md">Instructions</a></p>
-        </aside>
-        <main id="board-container">
-            <div id="board">
-                <div id="secret-row" class="row">
-                    <div class="cell secret-cell" color="darkgreen"></div>
-                    <div class="cell secret-cell" color="darkgreen"></div>
-                    <div class="cell secret-cell" color="darkgreen"></div>
-                    <div class="cell secret-cell" color="darkgreen"></div>
-                </div>
-                <div id="main-row-container"></div>
-            </div>
-        </main>
-    </div>
+    <aside id="aside">
+        <div id="instructions">
+            <p>Guess the secret code by selecting four colors using the buttons below:</p>
+        </div>
+        <div id="button-bar">
+            <button class="button">red</button>
+            <button class="button">orange</button>
+            <button class="button">yellow</button>
+            <button class="button">green</button>
+            <button class="button">blue</button>
+            <button class="button">black</button>
+        </div>
+        <div id="message-display"></div>
+        <p id="instructions-link"><a href="https://github.com/abepolk/mastermind/blob/master/README.md">Instructions</a></p>
+    </aside>
+    <main id="board">
+        <div id="secret-row" class="row">
+            <div class="cell secret-cell" color="darkgreen"></div>
+            <div class="cell secret-cell" color="darkgreen"></div>
+            <div class="cell secret-cell" color="darkgreen"></div>
+            <div class="cell secret-cell" color="darkgreen"></div>
+        </div>
+    </main>
 </body>
 </html>

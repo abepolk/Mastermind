@@ -77,7 +77,7 @@ const addColorElement = (color) => {
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr[0].length; j++) {
             if (arr[i][j] === 'empty') {
-                $('#main-row-container').children().eq(i).children('.cell').eq(j).attr('color', color);
+                $('#board').children().eq(i).children('.cell').eq(j).attr('color', color);
                 break outer;
             }
         }
@@ -130,9 +130,10 @@ const displayResults = (resultsArray, currentRowIndex) => {
 const generateMainCells = () => {
     for (let i = 0; i < NUM_ROWS; i++) {
         const $row = $('<div>').addClass('row');
+        const $mainRow = $('<div>').addClass('main-row')
         for (let i = 0; i < NUM_COLS; i++) {
             const $cell = $('<div>').addClass('cell').attr('color', 'empty'); // Must add attr color here?
-            $row.append($cell);
+            $mainRow.append($cell);
         }
         const $resultsCellContainer = $('<div>').addClass('results-cell-container');
         const $resultsBox = $('<div>').addClass('results-box')
@@ -142,7 +143,8 @@ const generateMainCells = () => {
         }
         $resultsCellContainer.append($resultsBox);
         $row.append($resultsCellContainer);
-        $('#main-row-container').append($row);
+        $row.append($mainRow)
+        $('#board').append($row);
     }
 }
 
