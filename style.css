@@ -12,6 +12,7 @@ body {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 body {
@@ -24,10 +25,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     flex-grow: 1;
+    padding: 0 10vh;
 }
 #instructions {
     text-align: center;
-    font-size: 32px;
+    font-size: 2rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 #button-bar {
@@ -36,15 +38,35 @@ body {
     flex-wrap: wrap;
 }
 .button {
+    border-radius: 2vh;
     width: 30%;
     height: 10vh;
     font-size: 24px;
     margin: 1%;
 }
+.button[color='red'] {
+    background-color: pink;
+}
+.button[color='orange'] {
+    background-color: bisque;
+}
+.button[color='yellow'] {
+    background-color: lemonchiffon;
+}
+.button[color='green'] {
+    background-color: #ccffcc;
+}
+.button[color='blue'] {
+    background-color: lightblue;
+}
+.button[color='black'] {
+    background-color: lightgray;
+}
 #message-display {
     text-align: center;
 }
 #instructions-link {
+    font-size: 1.5rem;
     text-align: center;
 }
 #board {
