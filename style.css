@@ -66,8 +66,17 @@ body {
     text-align: center;
 }
 #instructions-link {
+    /*border: 2px solid lightgray;*/
+    border-radius: 2vh;
+    padding: 3vh;
+    margin: 0 auto;
+    background-color: lemonchiffon;
     font-size: 1.5rem;
-    text-align: center;
+    box-shadow: 2px 2px 2px 2px gray;
+}
+#instructions-link a {
+    text-decoration: none;
+    color: black;
 }
 #board {
     /* left right pad not working */
@@ -82,9 +91,6 @@ body {
     justify-content: center;
     flex-grow: 1;
     display: flex;
-}
-.secret-cell {
-    background-color: blac
 }
 #main-row-container {
     display: flex;
