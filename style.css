@@ -73,6 +73,8 @@ body {
 }
 #instructions-link {
     /*border: 2px solid lightgray;*/
+    text-decoration: none;
+    color: black;
     border-radius: 2vh;
     padding: 3vh;
     margin: 5vh auto;
