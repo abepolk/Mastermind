@@ -71,20 +71,23 @@ body {
 #message-display {
     text-align: center;
 }
-#instructions-link {
-    /*border: 2px solid lightgray;*/
+#instructions-link, .social-media-link {
     text-decoration: none;
     color: black;
     border-radius: 2vh;
-    padding: 3vh;
-    margin: 5vh auto;
     background-color: lemonchiffon;
-    font-size: 1.5rem;
     box-shadow: 2px 2px 2px 2px gray;
 }
-#instructions-link a {
-    text-decoration: none;
-    color: black;
+#instructions-link {
+    padding: 3vh;
+    margin: 5vh auto;
+    font-size: 1.5rem;
+}
+.social-media-link {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 1.5vh;
+    margin: 1.5vh;
 }
 #board {
     /* left right pad not working */
@@ -182,5 +185,8 @@ body {
 @media (min-width: 500px) {
     html {
         font-size: 16px;
+    }
+    .social-media-link {
+        margin: 2.5vh;
     }
 }
